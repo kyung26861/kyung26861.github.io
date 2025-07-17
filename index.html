@@ -17,14 +17,15 @@
         al, ul, li {font-size:12px; text-align:left; color:#666; }
     </style>
      <script>
-       document.addEventListener("DOMContentLoaded", function() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    const textdate = `${year}-${month}-${day}`;
+       const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const date = today.getDate();
+  const days = ['일', '월', '화', '수', '목', '금', '토'];
+  const dayName = days[today.getDay()];
 
-    document.getElementById("todayDisplay").textContent = `${textdate}`;
+  const formatted = `${year}.${month}.${date} (${dayName})`;
+  document.getElementById("todayDisplay").textContent = formatted;
     
     // 날짜 하이라이트 로직 (위에서 개선한 버전 사용)
     if (year === 2025 && today.getMonth() + 1 === 2) {
@@ -44,7 +45,7 @@
 <body>
     <div class="container mt-4">
         <h1 id="todayDisplay"></h1>
-        <p>February</p>
+        <p></p>
         <table class="table table-bordered">
             <thead>
                 <tr>
